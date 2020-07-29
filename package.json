@@ -1,0 +1,34 @@
+{
+    "name": "cmd-parser",
+    "version": "1.0.0",
+    "description": "Parses and executes commands from chat messages.",
+    "author": {
+        "name": "Emmanuelle"
+    },
+    "contributors": [],
+    "license": "UNLICENSED",
+    "private": true,
+    "main": "src/index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wolfstuff/cmd-parser.git"
+    },
+    "bugs": {
+        "url": "https://github.com/wolfstuff/cmd-parser/issues"
+    },
+    "homepage": "https://github.com/wolfstuff/cmd-parser#readme",
+    "scripts": {
+        "ava": "nyc --reporter=lcov --reporter=text-summary ava --verbose test/**/*.test.js",
+        "eslint": "eslint src/**/*.js",
+        "test": "npm run eslint && npm run ava"
+    },
+    "engines": {
+        "node": "^12.18.2"
+    },
+    "devDependencies": {
+        "ava": "^3.10.1",
+        "eslint": "^7.5.0",
+        "eslint-plugin-jsdoc": "^30.0.3",
+        "nyc": "^15.1.0"
+    }
+}
