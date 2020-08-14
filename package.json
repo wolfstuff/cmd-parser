@@ -5,7 +5,11 @@
     "author": {
         "name": "Emmanuelle"
     },
-    "contributors": [],
+    "contributors": [
+        {
+            "name": "Tashi"
+        }
+    ],
     "license": "UNLICENSED",
     "private": true,
     "main": "src/index.js",
