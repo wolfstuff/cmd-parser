@@ -64,8 +64,7 @@ module.exports = function parser(prefix) {
         const command = matched.command;
         const args    = (matched.args !== undefined)
             ? matched.args.match(args_expr).map((arg) => {
-                return arg.split('"')
-                    .join('')
+                return arg.replace(/"/gu, '')
                     .trim();
             })
             : [];
