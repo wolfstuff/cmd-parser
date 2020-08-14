@@ -56,7 +56,7 @@ module.exports = function parser(prefix) {
      *     result3.args; // []
      */
     return function parse(str) {
-        if (str[0] !== prefix.charAt(0)) {
+        if (!str.startsWith(prefix)) {
             return str;
         }
 
@@ -64,8 +64,7 @@ module.exports = function parser(prefix) {
         const command = matched.command;
         const args    = (matched.args !== undefined)
             ? matched.args.match(args_expr).map((arg) => {
-                return arg.split('"')
-                    .join('')
+                return arg.replace(/"/gu, '')
                     .trim();
             })
             : [];
