@@ -84,19 +84,21 @@ module.exports = function makeParser(commands, opts) {
         if (!parsed.command) {
             // This message is not a command; so ignore the input:
             return;
-        } else if (Object.prototype.hasOwnProperty.call(commands, parsed.command)) {
-            try {
-                if (options.removeCommandMessages) {
-                    await options.fnRemoveMessage(message);
-                }
-
-                return commands[parsed.command].call(null, message, ...parsed.args);
-            } catch (e) {
-                return options.fnError(message, e);
-            }
         }
 
-        return options.fnUnrecognized(message);
+        if (!Object.prototype.hasOwnProperty.call(commands, parsed.command)) {
+            return options.fnUnrecognized(message);
+        }
+
+        try {
+            if (options.removeCommandMessages) {
+                await options.fnRemoveMessage(message);
+            }
+
+            return commands[parsed.command].call(null, message, ...parsed.args);
+        } catch (e) {
+            return options.fnError(message, e);
+        }
     };
 };
 
