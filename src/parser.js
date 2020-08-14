@@ -56,7 +56,7 @@ module.exports = function parser(prefix) {
      *     result3.args; // []
      */
     return function parse(str) {
-        if (str[0] !== prefix.charAt(0)) {
+        if (!str.startsWith(prefix)) {
             return str;
         }
 
