@@ -27,14 +27,20 @@ const parser = require('./parser');
  */
 
 /**
- * Default options used to determine the behavior of the command parser.
+ * Options used by the parser.
  *
- * @type {object}
+ * @typedef {object} ParserOptions
  * @property {string}   commandPrefix         - The single-character prefix used to recognize commands.
  * @property {Function} fnError               - A function called when command execution fails.
  * @property {Function} fnRemoveMessage       - A function optionally called to remove a command message.
  * @property {Function} fnUnrecognized        - A function called when an unrecognized command is parsed.
  * @property {boolean}  removeCommandMessages - If `true`, calls `fnRemoveMessage` for each command message.
+ */
+
+/**
+ * Default options used to determine the behavior of the command parser.
+ *
+ * @type {ParserOptions}
  * @private
  */
 const defaultOpts = {
@@ -53,7 +59,7 @@ const defaultOpts = {
  * is set to `false` instead of its default `true` value.
  *
  * @param   {CommandsObject} commands - Commands to use by the bot client.
- * @param   {object}         opts     - The prefix used by all commands; the `!` in `!command`.
+ * @param   {ParserOptions}  opts     - Options to use for the parser.
  * @returns {Function}                - A handler function that parses messages for commands.
  * @public
  * @example
